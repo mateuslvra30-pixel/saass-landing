@@ -7,11 +7,11 @@
 
   <style>
     :root {
-      --bg: #1f1f1f;
-      --bg-light: #2a2a2a;
-      --text: #f1f1f1;
-      --muted: #b5b5b5;
-      --accent: #4ade80;
+      --bg: #181818;
+      --bg-light: #242424;
+      --text: #f5f5f5;
+      --muted: #bcbcbc;
+      --line: #2f2f2f;
     }
 
     * {
@@ -24,25 +24,26 @@
     body {
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
       overflow-x: hidden;
     }
 
-    /* FUNDO ANIMADO */
+    /* FUNDO ANIMADO SUTIL */
     body::before {
       content: "";
       position: fixed;
-      inset: -50%;
-      background: radial-gradient(circle at 30% 30%, rgba(74,222,128,0.08), transparent 40%),
-                  radial-gradient(circle at 70% 70%, rgba(255,255,255,0.04), transparent 40%);
-      animation: moveBg 30s linear infinite;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.035), transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.02), transparent 45%);
+      animation: bgMove 35s ease-in-out infinite;
       z-index: -1;
     }
 
-    @keyframes moveBg {
-      0% { transform: translate(0, 0); }
-      50% { transform: translate(5%, 5%); }
-      100% { transform: translate(0, 0); }
+    @keyframes bgMove {
+      0% { transform: translate(0,0); }
+      50% { transform: translate(4%,3%); }
+      100% { transform: translate(0,0); }
     }
 
     a {
@@ -54,23 +55,24 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 32px 8%;
+      padding: 36px 8%;
+      border-bottom: 1px solid var(--line);
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       font-weight: 800;
       font-size: 22px;
       letter-spacing: 1px;
     }
 
     .logo-box {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: var(--accent);
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #fff;
       color: #000;
       display: flex;
       align-items: center;
@@ -79,53 +81,48 @@
     }
 
     .btn {
-      padding: 12px 22px;
-      background: var(--accent);
-      color: #000;
+      padding: 12px 26px;
+      border: 1px solid #fff;
       border-radius: 30px;
       font-weight: 600;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(74,222,128,0.3);
+      background: #fff;
+      color: #000;
     }
 
     section {
-      padding: 110px 8%;
+      padding: 120px 8%;
       max-width: 1200px;
       margin: auto;
     }
 
     h1 {
-      font-size: 52px;
+      font-size: 54px;
       font-weight: 900;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
     }
 
     h2 {
       font-size: 34px;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     h3 {
-      margin-bottom: 10px;
       font-size: 20px;
+      margin-bottom: 10px;
     }
 
     p {
       color: var(--muted);
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       font-size: 17px;
     }
 
     .hero {
       text-align: center;
-    }
-
-    .hero span {
-      color: var(--accent);
     }
 
     .grid {
@@ -136,8 +133,9 @@
 
     .card {
       background: var(--bg-light);
-      padding: 28px;
-      border-radius: 18px;
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
       transition: transform 0.3s ease;
     }
 
@@ -146,8 +144,8 @@
     }
 
     footer {
-      padding: 50px 8%;
-      border-top: 1px solid #333;
+      padding: 60px 8%;
+      border-top: 1px solid var(--line);
       text-align: center;
       color: var(--muted);
       font-size: 14px;
@@ -164,84 +162,82 @@
   </div>
 
   <a class="btn" href="https://wa.me/557193256978" target="_blank">
-    Fale Conosco
+    Contato
   </a>
 </header>
 
 <section class="hero">
-  <h1>Soluções digitais que <span>trabalham por você</span></h1>
+  <h1>
+    Tecnologia simples.<br>
+    Resultados reais.
+  </h1>
 
   <p>
-    A RIGHT HAND nasce com uma ideia simples: ser a mão direita de pessoas e empresas
-    que precisam de tecnologia para crescer, mas não querem soluções caras,
-    complicadas ou cheias de promessas vazias.
+    A RIGHT HAND é uma empresa de soluções digitais criada para atuar como
+    parceira estratégica de pessoas e negócios que precisam de tecnologia,
+    mas não querem complexidade, desperdício ou custos fora da realidade.
   </p>
 
   <p>
-    Desenvolvemos softwares, sites e sistemas com foco total em praticidade,
-    automação e eficiência. Cada projeto é pensado para resolver um problema real,
-    melhorar processos e tornar o dia a dia mais simples.
+    Desenvolvemos softwares, sites e sistemas com foco em automação,
+    organização e eficiência. Nosso trabalho começa entendendo o problema
+    e termina com uma solução clara, funcional e acessível.
   </p>
-
-  <a class="btn" href="https://wa.me/557193256978" target="_blank">
-    Conversar agora
-  </a>
 </section>
 
 <section>
-  <h2>O que fazemos</h2>
+  <h2>O que entregamos</h2>
 
   <p>
-    Atuamos no desenvolvimento de soluções digitais sob medida, sempre buscando
-    equilibrar tecnologia, simplicidade e custo acessível.
-    Nosso foco não é entregar o maior sistema do mercado, e sim o mais útil.
+    Nosso objetivo não é impressionar com palavras técnicas,
+    e sim entregar soluções que realmente façam diferença no dia a dia.
   </p>
 
   <div class="grid">
     <div class="card">
-      <h3>Automação de processos</h3>
+      <h3>Automação inteligente</h3>
       <p>
-        Criamos sistemas que reduzem tarefas repetitivas, organizam informações
-        e ajudam empresas a ganhar tempo e eficiência.
+        Sistemas que reduzem trabalho manual, organizam processos
+        e ajudam negócios a operar de forma mais eficiente.
       </p>
     </div>
 
     <div class="card">
       <h3>Sites e aplicações</h3>
       <p>
-        Desenvolvemos sites institucionais, landing pages e aplicações simples,
-        funcionais e com visual moderno.
+        Presença digital profissional, clara e objetiva,
+        pensada para comunicar e converter.
       </p>
     </div>
 
     <div class="card">
-      <h3>Soluções personalizadas</h3>
+      <h3>Soluções sob medida</h3>
       <p>
-        Cada negócio é diferente. Por isso, pensamos cada projeto de forma única,
-        respeitando a realidade e o orçamento do cliente.
+        Cada projeto é construído respeitando o contexto,
+        o orçamento e os objetivos do cliente.
       </p>
     </div>
   </div>
 </section>
 
 <section>
-  <h2>Nosso diferencial</h2>
+  <h2>Como pensamos</h2>
 
   <p>
-    A RIGHT HAND acredita que tecnologia boa é aquela que funciona sem complicar.
-    Falamos de forma clara, entregamos o que foi combinado e buscamos construir
-    parcerias duradouras.
+    Acreditamos que tecnologia deve trabalhar a favor das pessoas,
+    e não o contrário. Por isso, priorizamos clareza, funcionalidade
+    e soluções bem pensadas.
   </p>
 
   <p>
-    Não vendemos milagres, não empurramos funcionalidades desnecessárias
-    e não tratamos clientes como números.
-    Nosso objetivo é simples: ajudar você a evoluir usando tecnologia do jeito certo.
+    Não vendemos promessas irreais, não empurramos funcionalidades
+    desnecessárias e não tratamos projetos como produtos de prateleira.
+    Nosso foco é construir algo que realmente funcione.
   </p>
 </section>
 
 <footer>
-  © 2026 RIGHT HAND — Soluções Digitais Inteligentes
+  © 2026 RIGHT HAND — Soluções Digitais
 </footer>
 
 </body>
