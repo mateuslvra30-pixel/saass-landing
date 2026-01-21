@@ -24,7 +24,25 @@
     body {
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* FUNDO ANIMADO */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -50%;
+      background: radial-gradient(circle at 30% 30%, rgba(74,222,128,0.08), transparent 40%),
+                  radial-gradient(circle at 70% 70%, rgba(255,255,255,0.04), transparent 40%);
+      animation: moveBg 30s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveBg {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(5%, 5%); }
+      100% { transform: translate(0, 0); }
     }
 
     a {
@@ -37,7 +55,6 @@
       justify-content: space-between;
       align-items: center;
       padding: 32px 8%;
-      animation: fadeDown 1s ease;
     }
 
     .logo {
@@ -76,34 +93,44 @@
     }
 
     section {
-      padding: 100px 8%;
+      padding: 110px 8%;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    .hero {
-      text-align: center;
-      animation: fadeUp 1.2s ease;
-    }
-
-    .hero h1 {
+    h1 {
       font-size: 52px;
       font-weight: 900;
       margin-bottom: 20px;
     }
 
-    .hero h1 span {
-      color: var(--accent);
+    h2 {
+      font-size: 34px;
+      margin-bottom: 30px;
     }
 
-    .hero p {
+    h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    p {
       color: var(--muted);
-      max-width: 720px;
-      margin: 0 auto 40px;
-      font-size: 18px;
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .hero span {
+      color: var(--accent);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 28px;
     }
 
@@ -112,156 +139,110 @@
       padding: 28px;
       border-radius: 18px;
       transition: transform 0.3s ease;
-      animation: fadeUp 1.2s ease;
     }
 
     .card:hover {
       transform: translateY(-6px);
     }
 
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
     footer {
-      padding: 40px 8%;
+      padding: 50px 8%;
       border-top: 1px solid #333;
       text-align: center;
       color: var(--muted);
       font-size: 14px;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">
-      <div class="logo-box">RH</div>
-      RIGHT HAND
+<header>
+  <div class="logo">
+    <div class="logo-box">RH</div>
+    RIGHT HAND
+  </div>
+
+  <a class="btn" href="https://wa.me/557193256978" target="_blank">
+    Fale Conosco
+  </a>
+</header>
+
+<section class="hero">
+  <h1>Soluções digitais que <span>trabalham por você</span></h1>
+
+  <p>
+    A RIGHT HAND nasce com uma ideia simples: ser a mão direita de pessoas e empresas
+    que precisam de tecnologia para crescer, mas não querem soluções caras,
+    complicadas ou cheias de promessas vazias.
+  </p>
+
+  <p>
+    Desenvolvemos softwares, sites e sistemas com foco total em praticidade,
+    automação e eficiência. Cada projeto é pensado para resolver um problema real,
+    melhorar processos e tornar o dia a dia mais simples.
+  </p>
+
+  <a class="btn" href="https://wa.me/557193256978" target="_blank">
+    Conversar agora
+  </a>
+</section>
+
+<section>
+  <h2>O que fazemos</h2>
+
+  <p>
+    Atuamos no desenvolvimento de soluções digitais sob medida, sempre buscando
+    equilibrar tecnologia, simplicidade e custo acessível.
+    Nosso foco não é entregar o maior sistema do mercado, e sim o mais útil.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Automação de processos</h3>
+      <p>
+        Criamos sistemas que reduzem tarefas repetitivas, organizam informações
+        e ajudam empresas a ganhar tempo e eficiência.
+      </p>
     </div>
 
-    <a class="btn" href="https://wa.me/557193256978" target="_blank">
-      Fale Conosco
-    </a>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <h1>
-      Sua <span>mão direita</span> no digital
-    </h1>
-
-    <p>
-      A RIGHT HAND desenvolve softwares, sites e sistemas acessíveis
-      com foco em automatizar processos, facilitar rotinas
-      e impulsionar negócios de forma inteligente e eficiente.
-    </p>
-
-    <a class="btn" href="https://wa.me/557193256978" target="_blank">
-      Conversar agora
-    </a>
-  </section>
-
-  <!-- O QUE FAZEMOS -->
-  <section>
-    <div class="grid">
-      <div class="card">
-        <h3>Automação</h3>
-        <p>
-          Criamos soluções que reduzem tarefas repetitivas,
-          economizam tempo e aumentam a produtividade.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Sites e Sistemas</h3>
-        <p>
-          Desenvolvemos sites e aplicações funcionais,
-          modernos e fáceis de usar.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Soluções Sob Medida</h3>
-        <p>
-          Cada projeto é pensado para resolver um problema real,
-          sem excesso, sem desperdício.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Preço Acessível</h3>
-        <p>
-          Tecnologia não precisa ser cara.
-          Nosso foco é entregar valor com custo justo.
-        </p>
-      </div>
+    <div class="card">
+      <h3>Sites e aplicações</h3>
+      <p>
+        Desenvolvemos sites institucionais, landing pages e aplicações simples,
+        funcionais e com visual moderno.
+      </p>
     </div>
-  </section>
 
-  <!-- DIFERENCIAL -->
-  <section>
-    <div class="grid">
-      <div class="card">
-        <h3>Foco no essencial</h3>
-        <p>
-          Nada de soluções infladas. Entregamos exatamente
-          o que o seu negócio precisa.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Comunicação clara</h3>
-        <p>
-          Falamos a sua língua. Sem termos confusos,
-          sem promessas irreais.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Parceria real</h3>
-        <p>
-          Mais do que fornecedores, somos aliados
-          no crescimento do seu projeto.
-        </p>
-      </div>
+    <div class="card">
+      <h3>Soluções personalizadas</h3>
+      <p>
+        Cada negócio é diferente. Por isso, pensamos cada projeto de forma única,
+        respeitando a realidade e o orçamento do cliente.
+      </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2026 RIGHT HAND — Soluções Digitais Inteligentes
-  </footer>
+<section>
+  <h2>Nosso diferencial</h2>
+
+  <p>
+    A RIGHT HAND acredita que tecnologia boa é aquela que funciona sem complicar.
+    Falamos de forma clara, entregamos o que foi combinado e buscamos construir
+    parcerias duradouras.
+  </p>
+
+  <p>
+    Não vendemos milagres, não empurramos funcionalidades desnecessárias
+    e não tratamos clientes como números.
+    Nosso objetivo é simples: ajudar você a evoluir usando tecnologia do jeito certo.
+  </p>
+</section>
+
+<footer>
+  © 2026 RIGHT HAND — Soluções Digitais Inteligentes
+</footer>
 
 </body>
 </html>
