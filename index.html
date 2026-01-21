@@ -15,18 +15,37 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(120deg, #1a1a1a, #141414, #1c1c1c);
-      background-size: 300% 300%;
-      animation: bgMove 20s ease infinite;
+      background: #141414;
+      color: white;
+      overflow-x: hidden;
     }
 
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* FUNDO VIVO */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
     }
 
-    /* Texto aparece suave */
+    /* textura granulada */
+    .noise {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    /* luz passando */
+    .light {
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06), transparent 60%);
+      animation: lightMove 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes lightMove {
+      0% { transform: translate(-10%, -10%); }
+      100% { transform: translate(10%, 10%); }
+    }
+
+    /* fade */
     .fade-up {
       animation: fadeUp 0.9s ease forwards;
     }
@@ -36,14 +55,14 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Letras vivas */
+    /* letras vivas */
     .floating-text span {
       display: inline-block;
-      animation: floatText 5s ease-in-out infinite;
+      animation: floatText 5.5s ease-in-out infinite;
     }
 
     .floating-text span:nth-child(even) {
-      animation-delay: 0.6s;
+      animation-delay: 0.8s;
     }
 
     @keyframes floatText {
@@ -51,19 +70,22 @@
       50% { transform: translateY(-6px); }
     }
 
-    /* Magnetismo */
+    /* magnetismo */
     .magnetic {
       transition: transform 0.2s ease;
-      cursor: default;
     }
   </style>
 </head>
 
-<body class="text-white">
+<body>
+
+  <!-- FUNDO -->
+  <div class="bg-layer noise"></div>
+  <div class="bg-layer light"></div>
 
   <!-- HEADER -->
   <header class="max-w-6xl mx-auto px-6 py-16 flex items-center gap-6 fade-up">
-    <div class="w-20 h-20 logo-animate">
+    <div class="w-20 h-20">
       <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="20" width="260" height="260" stroke="white" stroke-width="10"/>
         <g stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
@@ -91,8 +113,8 @@
     </h2>
 
     <p class="mt-12 text-xl text-gray-300 max-w-3xl leading-relaxed fade-up">
-      A RIGHT HAND nasce com uma missão simples: criar softwares acessíveis que eliminam fricções,
-      automatizam processos e liberam tempo para o que realmente importa no seu negócio.
+      Desenvolvemos softwares, sites e sistemas que simplificam processos,
+      automatizam tarefas e transformam ideias em soluções funcionais.
     </p>
   </section>
 
@@ -105,51 +127,14 @@
   <section class="max-w-6xl mx-auto px-6 py-24">
     <h3 class="text-3xl font-medium mb-10 magnetic">Quem somos</h3>
     <p class="text-gray-300 text-lg max-w-3xl leading-relaxed">
-      Somos uma empresa de tecnologia focada em desenvolver soluções digitais sob medida.
-      Atuamos como braço técnico de empresas que precisam organizar informações,
-      automatizar rotinas ou transformar ideias em sistemas funcionais e eficientes.
+      A RIGHT HAND é uma empresa de tecnologia focada em criar soluções digitais acessíveis,
+      eficientes e sob medida. Atuamos como parceiro técnico de negócios que precisam
+      ganhar tempo, organização e clareza através de software.
     </p>
 
     <p class="mt-6 text-gray-400 text-lg max-w-3xl leading-relaxed">
-      Cada projeto é pensado para ser simples, escalável e financeiramente viável,
-      mesmo para negócios em fase inicial.
+      Nosso foco é simplicidade, custo justo e impacto real.
     </p>
-  </section>
-
-  <!-- DIVIDER -->
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
-  </div>
-
-  <!-- SERVIÇOS -->
-  <section class="max-w-6xl mx-auto px-6 py-24">
-    <h3 class="text-3xl font-medium mb-14 magnetic">O que fazemos</h3>
-
-    <div class="grid md:grid-cols-3 gap-14">
-      <div>
-        <h4 class="text-xl font-medium mb-4">Softwares personalizados</h4>
-        <p class="text-gray-400 leading-relaxed">
-          Desenvolvimento de sistemas focados em automatizar processos, controlar dados
-          e aumentar a eficiência operacional.
-        </p>
-      </div>
-
-      <div>
-        <h4 class="text-xl font-medium mb-4">Sites e aplicações web</h4>
-        <p class="text-gray-400 leading-relaxed">
-          Criação de sites institucionais e aplicações modernas,
-          com foco em clareza, performance e experiência do usuário.
-        </p>
-      </div>
-
-      <div>
-        <h4 class="text-xl font-medium mb-4">Soluções sob demanda</h4>
-        <p class="text-gray-400 leading-relaxed">
-          Projetos pensados de acordo com a necessidade real do cliente,
-          sem complexidade desnecessária.
-        </p>
-      </div>
-    </div>
   </section>
 
   <!-- CTA -->
@@ -159,8 +144,8 @@
     </h3>
 
     <p class="text-gray-300 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-      Se você tem uma ideia, um processo manual ou um problema recorrente,
-      a RIGHT HAND pode transformar isso em software.
+      Se existe algo no seu negócio que pode ser automatizado,
+      organizado ou melhorado, a RIGHT HAND pode construir isso.
     </p>
 
     <a href="https://wa.me/557193256978" target="_blank"
@@ -173,13 +158,13 @@
     RIGHT HAND © 2026 — Softwares facilitadores
   </footer>
 
-  <!-- MAGNETISMO TEXTO -->
+  <!-- MAGNETISMO -->
   <script>
     document.querySelectorAll('.magnetic').forEach(el => {
       el.addEventListener('mousemove', e => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
         el.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
       });
       el.addEventListener('mouseleave', () => {
